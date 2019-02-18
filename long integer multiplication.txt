@@ -1,0 +1,124 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+long noOfDigit(long m,long n)
+
+
+{
+ 
+   
+  long long max;
+ 
+  long b=0;
+ 
+
+  if(m>=n)
+ 
+   max=m;
+ 
+	
+  else
+  
+  max=n;
+ 
+
+while(max>0)
+
+ {
+  
+   max=max/10;
+  
+    b++;
+ 
+ }
+ 
+
+return b;
+
+
+}
+
+
+long long prod(long long u,long long v)
+
+
+{
+ 
+   long long x,y,w,z;
+ 
+   long long n,m,p,q,r;
+
+   n=noOfDigit(u,v);
+ 
+
+
+   if(u==0 || v==0)
+ 
+   {
+ 
+      return 0;
+ 
+   }
+
+
+  else if(n<=2)
+ 
+  {
+  
+     return (u*v);
+ 
+  }
+
+
+  else
+ 
+  {
+  
+     m=n/2;
+    w=u/pow(10,m);
+ 
+
+    x=u%(int)(pow(10,m));
+ 
+
+    y=v/pow(10,m);
+  
+
+    z=v%(int)(pow(10,m));
+
+    p=prod(w,y);
+ 
+
+    q=prod(x,z);
+
+
+    r=prod(w+x,y+z);
+
+
+   return p * pow(10,2*m) + (r-p-q) * pow(10,m) + q;
+
+  }
+
+
+}
+
+
+int main()
+{
+
+     long long m,n;
+     cout<<"enter number 1"<<endl;
+     cin>>m;
+     cout<<"enter number 1"<<endl;
+
+     cin>>n;
+ 
+     cout<<"multiplication of numbers is "<<prod(m,n)<<endl;
+ 
+
+
+}
+
+
