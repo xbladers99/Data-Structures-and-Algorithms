@@ -1,0 +1,65 @@
+#include<iostream>
+ 
+using namespace std;
+ 
+int a[11],link[11];
+ 
+int Merge(int p,int q)
+{
+    int i=p,j=q,k=0;
+    while(i!=0&&j!=0)
+    {
+        if(a[i]<=a[j])
+        {
+            link[k]=i;
+            k=i;
+            i=link[i];
+        }
+        else
+        {
+          link[k]=j;
+          k=j;
+          j=link[j];
+        }
+    }
+    if(i==0)
+    {
+        link[k]=j;
+    }
+    else
+    {
+        link[k]=i;
+    }
+    return (link[0]);
+}
+ 
+int mergesort(int low,int high)
+{
+    int mid,p,q,k;
+    if(low<high)
+    {
+        mid=(low+high)/2;
+        p=mergesort(low,mid);
+        q=mergesort(mid+1,high);
+        return Merge(p,q);
+    }
+}
+int main()
+{
+ 
+    cout<<"enter 10 number"<<endl;
+    int i=0,j=0;
+    link[0]=0;
+    for(i=1;i<=10;i++)
+    {
+        cin>>a[i];
+        link[i]=0;
+    }
+    i=mergesort(1,10);
+ 
+    for(j=1;j<=10;j++)
+    {
+        cout<<a[i]<<" ";
+        i=link[i];
+    }
+}

@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    int count=0;
+ 
+    int m1,n1;
+    cin>>m1>>n1;
+    count++;
+ 
+    int a[m1][n1];
+ 
+ 
+    for(int i=0;i<m1;i++)
+    {
+        for(int j=0;j<n1;j++)
+        {
+            cin>>a[i][j];
+ 
+        }
+ 
+    }
+ 
+ 
+   int b[m1][n1];
+   count++;
+ 
+   for(int i=0;i<m1;i++)
+   {
+       for(int j=0;j<n1;j++)
+       {
+           cin>>b[i][j];
+ 
+       }
+ 
+   }
+ 
+ 
+   int c[m1][n1];
+   count++;
+ 
+   for(int i=0;i<m1;i++)
+   {
+       for(int j=0;j<n1;j++)
+       {
+           c[i][j]=a[i][j]+b[i][j];
+           count++;
+       }
+ 
+   }
+ 
+ 
+   count++;
+   count++;
+   cout<<count;
+ 
+ 
+    return 0;
+}

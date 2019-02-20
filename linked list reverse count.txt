@@ -1,0 +1,88 @@
+#include<iostream>
+using namespace std;
+int count=0;
+struct Node
+{
+    int data;
+    struct Node* next;
+    Node (int data)
+    {
+        this->data = data;
+        next = NULL;
+    }
+};
+ 
+struct LinkedList
+{
+    Node *head;    
+    LinkedList()
+    {
+        head = NULL;    count++;
+    }
+ 
+    void reverse()
+    {
+        Node *current = head;     
+ 
+        Node *prev = NULL, *next = NULL;   
+ 
+        count+=3;
+ 
+        while (current != NULL)
+        {
+            next = current->next;
+ 
+            current->next = prev;
+ 
+            prev = current;
+            current = next;
+ 
+            count++;
+        }
+        count++;
+ 
+        head = prev;
+        count+=2;
+    }
+ 
+    void print()
+    {
+        struct Node *temp = head;    count++;
+        while (temp != NULL)
+        {
+            cout << temp->data << " ";
+            temp = temp->next;
+            count+=2;
+        }
+        count++;
+    }
+ 
+    void push(int data)
+    {
+        Node *temp = new Node(data);
+        temp->next = head;
+        head = temp;
+        count++;
+    }
+};
+ 
+int main()
+{
+    LinkedList ll;  count++;
+    ll.push(20);    count++;
+    ll.push(4);     count++;
+    ll.push(15);    count++;
+    ll.push(85);    count++;
+ 
+    cout << "Given linked list\n";
+    ll.print();   count++;
+ 
+    ll.reverse(); count++;
+ 
+    cout << "\nReversed Linked list \n";
+    ll.print();   count++;
+ 
+    cout<<endl<<"count is "<<count;
+ 
+    return 0;
+}
